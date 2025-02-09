@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* The line @variant dark (&:where([data-theme="dark"], [data-theme="dark"] *)); 
+is a new feature in Tailwind CSS v4 that allows for custom variant definition, 
+specifically for dark mode. https://tailwindcss.com/docs/dark-mode */
+@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --color-background: #ffffff;
+  --color-text: #1a1a1a;
+  --color-primary: #3b82f6;
+  --color-background-dark: #0f172a;
+  --color-text-dark: #f8fafc;
+  --color-primary-dark: #60a5fa;
+}
+
+/* Define dark mode styles outside of @theme */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-background: var(--color-background-dark);
+    --color-text: var(--color-text-dark);
+    --color-primary: var(--color-primary-dark);
+  }
+}
